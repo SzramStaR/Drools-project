@@ -17,8 +17,6 @@ declare addInfo
 	info: String
 end
 
-
-
 function Answer showWindow(Question question) {
     int nr = JOptionPane.showOptionDialog(
             null,
@@ -40,14 +38,14 @@ function Answer showWindow(Question question) {
 rule "Start"
 when
 then
-    Question question = new Question("Should you be an engineer?", new String[]{"OK"});
+    Question question = new Question("Should you be an engineer?\nLet's find out!", new String[]{"OK"});
     insert(showWindow(question));
     System.out.println("START");
 end
 //left side
 rule "Responsible"
 	when
-		Answer(question == "Should you be an engineer?" && answer == "OK")
+		Answer(question == "Should you be an engineer?\nLet's find out!" && answer == "OK" )
 	then
 	Question question = new Question("Do you want a responsible job?",new String[] {"Yes", "No"});
 	insert(showWindow(question));
